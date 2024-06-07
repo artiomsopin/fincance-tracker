@@ -1,0 +1,23 @@
+package fincances.fincancetracker.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Entity
+@Data
+@Table(name = "transaction")
+public class TransactionEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private String name;
+
+    private long price;
+
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private UserEntity user;
+}
